@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WindowsPhoneEmulator xmlns="http://schemas.microsoft.com/WindowsPhoneEmulator/2009/08/SensorData">
+    <SensorData>
+        <Header version="1" />
+        <GpsData latitude="37.7829319255116" longitude="-122.400008712265" />
+        <GpsData latitude="37.7837798608575" longitude="-122.398903642151" />
+        <GpsData latitude="37.7849923915001" longitude="-122.400480781052" />
+        <GpsData latitude="37.7862727344311" longitude="-122.402004275772" />
+        <GpsData latitude="37.7871375892892" longitude="-122.403055701706" />
+        <GpsData latitude="37.787468266413" longitude="-122.40334538028" />
+        <GpsData latitude="37.7880448281154" longitude="-122.40350631282" />
+        <GpsData latitude="37.7887231302413" longitude="-122.403613601181" />
+        <GpsData latitude="37.7894183834588" longitude="-122.403742347214" />
+        <GpsData latitude="37.7900373228923" longitude="-122.403881822083" />
+        <GpsData latitude="37.7905969075067" longitude="-122.403967652771" />
+        <GpsData latitude="37.7911480094243" longitude="-122.404096398804" />
+        <GpsData latitude="37.7918178046828" longitude="-122.404235873673" />
+        <GpsData latitude="37.792394332448" longitude="-122.404300246689" />
+        <GpsData latitude="37.7929030296814" longitude="-122.404396806213" />
+        <GpsData latitude="37.7934286798097" longitude="-122.404589925262" />
+        <GpsData latitude="37.7939712824712" longitude="-122.404643569443" />
+        <GpsData latitude="37.7944375784496" longitude="-122.404772315475" />
+        <GpsData latitude="37.7947936570331" longitude="-122.404836688492" />
+        <GpsData latitude="37.795259947821" longitude="-122.40492251918" />
+        <GpsData latitude="37.7958025370331" longitude="-122.405072722885" />
+        <GpsData latitude="37.7962518657078" longitude="-122.405115638229" />
+        <GpsData latitude="37.7967011916496" longitude="-122.40522292659" />
+        <GpsData latitude="37.7971335593153" longitude="-122.405373130295" />
+        <GpsData latitude="37.7977185233057" longitude="-122.405458960983" />
+        <GpsData latitude="37.7983119603018" longitude="-122.405544791672" />
+        <GpsData latitude="37.7987104081813" longitude="-122.405587707016" />
+        <GpsData latitude="37.7986595426142" longitude="-122.406124148819" />
+        <GpsData latitude="37.7986086770121" longitude="-122.406446013901" />
+        <GpsData latitude="37.7985323785433" longitude="-122.407143388245" />
+        <GpsData latitude="37.7982102285839" longitude="-122.407111201736" />
+        <GpsData latitude="37.7985408561548" longitude="-122.407497439835" />
+        <GpsData latitude="37.7991512416287" longitude="-122.408420119736" />
+        <GpsData latitude="37.7994988199919" longitude="-122.408956561539" />
+        <GpsData latitude="37.7997531445873" longitude="-122.409289155457" />
+        <GpsData latitude="37.7998803065567" longitude="-122.409450087997" />
+        <GpsData latitude="37.7999311712831" longitude="-122.409611020538" />
+        <GpsData latitude="37.800312655615" longitude="-122.4099865298" />
+        <GpsData latitude="37.8003635200438" longitude="-122.410276208374" />
+        <GpsData latitude="37.8006347964054" longitude="-122.410501513931" />
+        <GpsData latitude="37.8008382530228" longitude="-122.410919938538" />
+        <GpsData latitude="37.801338414825" longitude="-122.411016498062" />
+        <GpsData latitude="37.8018216187732" longitude="-122.411134515259" />
+        <GpsData latitude="37.8029660365672" longitude="-122.411327634308" />
+        <GpsData latitude="37.8034322757699" longitude="-122.411456380341" />
+        <GpsData latitude="37.8038900350326" longitude="-122.411542211029" />
+        <GpsData latitude="37.8043562684023" longitude="-122.411628041718" />
+        <GpsData latitude="37.8048479294946" longitude="-122.411735330078" />
+        <GpsData latitude="37.8053819714552" longitude="-122.411831889603" />
+        <GpsData latitude="37.8058397186335" longitude="-122.411939177963" />
+        <GpsData latitude="37.8058227650849" longitude="-122.412271771881" />
+        <GpsData latitude="37.8058058115324" longitude="-122.412658009979" />
+        <GpsData latitude="37.8057549508515" longitude="-122.413033519241" />
+        <GpsData latitude="37.8057549508515" longitude="-122.413183722946" />
+        <GpsData latitude="37.8057210437115" longitude="-122.413451943848" />
+        <GpsData latitude="37.8057719044157" longitude="-122.413612876389" />
+        <GpsData latitude="37.8059668701239" longitude="-122.413612876389" />
+        <GpsData latitude="37.8064246136768" longitude="-122.413752351257" />
+        <GpsData latitude="37.8070010274481" longitude="-122.413848910782" />
+        <GpsData latitude="37.8073994284546" longitude="-122.413924012634" />
+        <GpsData latitude="37.8078147804069" longitude="-122.414042029831" />
+        <GpsData latitude="37.8083657538814" longitude="-122.414138589355" />
+        <GpsData latitude="37.8083488009127" longitude="-122.414932523224" />
+        <GpsData latitude="37.8083148949637" longitude="-122.41570499942" />
+        <GpsData latitude="37.8087048124378" longitude="-122.415812287781" />
+        <GpsData latitude="37.8091032042522" longitude="-122.415855203125" />
+        <GpsData latitude="37.8091964445792" longitude="-122.41611269519" />
+        <GpsData latitude="37.8092303501235" longitude="-122.416434560272" />
+    </SensorData>
+</WindowsPhoneEmulator>
