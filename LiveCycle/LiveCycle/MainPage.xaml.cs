@@ -8,11 +8,24 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using LiveCycle.Resources;
+using LiveCycle.Data;
+using System.ComponentModel;
 
 namespace LiveCycle
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        public DefaultViewModel DefaultViewModel
+        {
+            get { return (DefaultViewModel)GetValue(DefaultViewModelProperty); }
+            set { SetValue(DefaultViewModelProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DefaultViewModel.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DefaultViewModelProperty =
+            DependencyProperty.Register("DefaultViewModel", typeof(DefaultViewModel), typeof(MainPage), new PropertyMetadata(0));
+
+        
         // Constructor
         public MainPage()
         {
