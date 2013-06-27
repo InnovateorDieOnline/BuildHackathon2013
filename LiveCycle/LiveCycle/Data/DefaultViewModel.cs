@@ -14,8 +14,6 @@ namespace LiveCycle.Data
 {
     public class DefaultViewModel : INotifyPropertyChanged
     {
-        public GeoCoordinate Position { get; set; }
-
         #region Landmarks
         private ObservableCollection<Landmark> _Landmarks;
         public ObservableCollection<Landmark> Landmarks
@@ -28,20 +26,45 @@ namespace LiveCycle.Data
         public void DesignTimeSetup()
         {
 
-            Position = new GeoCoordinate();
-            Position.Latitude = 77;
-            Position.Longitude = 99;
+            var position = new GeoCoordinate();
+            position.Latitude = 77;
+            position.Longitude = 99;
 
             Random rand = new Random();
             Landmark poi = null;
             for (int i = 0; i < 10; i++)
             {
+
                 poi = new Landmark();
-                poi.Geocoordinate = new GeoCoordinate(Position.Latitude + (rand.Next(0, 9) / 100)
-                    , Position.Longitude + (rand.Next(0, 9) / 100));
+                poi.Geocoordinate = new GeoCoordinate(position.Latitude + (rand.Next(0, 9) / 100)
+                    , position.Longitude + (rand.Next(0, 9) / 100));
                 poi.Name = "Landmark " + i;
                 Landmarks.Add(poi);
             }
+
+            Landmarks.Add(GetGoldenGateBridge());
+        }
+
+        private Landmark GetGoldenGateBridge()
+        {
+            Landmark l = new Landmark()
+            {
+                Name = "Golden Gate Bridge",
+                Geocoordinate = new GeoCoordinate(37.81997, -122.47859),
+                ImageSource = "Images/GoldenGateBridge.png"
+            };
+            return l;
+        }
+
+        private Landmark GetRodeoBeach()
+        {
+            Landmark l = new Landmark()
+            {
+                Name = "Rodeo Beach",
+                Geocoordinate = new GeoCoordinate(37.8300, -122.5358),
+                ImageSource = "Images/RodeoBay.png"
+            };
+            return l;
         }
 
         public DefaultViewModel()
@@ -51,6 +74,7 @@ namespace LiveCycle.Data
             if (DesignerProperties.IsInDesignTool)
                 DesignTimeSetup();
         }
+
 
         #region INPC
         public event PropertyChangedEventHandler PropertyChanged;

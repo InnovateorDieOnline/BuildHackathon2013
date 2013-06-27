@@ -12,5 +12,6 @@ namespace LiveCycle.Models
     {
         public GeoCoordinate Geocoordinate { get; set; }
         public string Name { get; set; }
+        public string ImageSource { get; set; }
     }
 }
