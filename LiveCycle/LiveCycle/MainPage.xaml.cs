@@ -97,7 +97,7 @@ namespace LiveCycle
         {
             var nearest = this.DefaultViewModel.Landmarks.OrderBy(x => geoCoordinate.GetDistanceTo(x.Geocoordinate)).First();
             var distance = geoCoordinate.GetDistanceTo(nearest.Geocoordinate);
-            double notificationThreshold = 8000;
+            double notificationThreshold = 1000;
             if (distance < notificationThreshold && _activeLocation != nearest)
             {
                 _activeLocation = nearest;

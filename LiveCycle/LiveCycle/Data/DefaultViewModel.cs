@@ -43,6 +43,7 @@ namespace LiveCycle.Data
             }
 
             Landmarks.Add(GetGoldenGateBridge());
+            Landmarks.Add(GetRodeoBeach());
         }
 
         private Landmark GetGoldenGateBridge()
