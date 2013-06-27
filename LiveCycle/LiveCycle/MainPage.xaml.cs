@@ -19,12 +19,20 @@ using Microsoft.Phone.Maps.Controls;
 using LiveCycle.Models;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Animation;
+using Windows.Devices.Geolocation;
+using Microsoft.Phone.Maps.Services;
+using Microsoft.Phone.Maps.Controls;
 
 namespace LiveCycle
 {
     public partial class MainPage : PhoneApplicationPage
     {
         Landmark _activeLocation;
+
+        RouteQuery routeQuery = null;
+        List<GeoCoordinate> MyCoordinates = new List<GeoCoordinate>();
+        int pointCount = 0;
+
 
         public DefaultViewModel DefaultViewModel
         {
@@ -44,6 +52,7 @@ namespace LiveCycle
 
             DefaultViewModel.DesignTimeSetup();
 
+            this.GetCoordinates();
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
@@ -181,7 +190,92 @@ namespace LiveCycle
         }
 
 
-        
+
+        private void GetCoordinates()
+        {
+            routeQuery = new RouteQuery();
+
+            /*
+            GeoCoordinate currentLocation = new GeoCoordinate(37.7842, -122.4016);
+            
+            GeocodeQuery startPoint = new GeocodeQuery();
+            startPoint.SearchTerm = "Golden Gate Bridge";
+            startPoint.GeoCoordinate = currentLocation;
+            startPoint.QueryCompleted += geocodequery_QueryCompleted;
+            startPoint.QueryAsync();
+            pointCount++;
+            
+
+            GeocodeQuery endPoint = new GeocodeQuery();
+            endPoint.SearchTerm = "Rodeo Beach";
+            endPoint.GeoCoordinate = currentLocation;
+            endPoint.QueryCompleted += geocodequery_QueryCompleted;
+            endPoint.QueryAsync();
+            pointCount++;
+            */
+
+            GeoCoordinate bridge = new GeoCoordinate(37.8071, -122.4739);
+            GeoCoordinate midWay = new GeoCoordinate(37.8262, -122.4995);
+            GeoCoordinate beach = new GeoCoordinate(37.8300, -122.5358);
+            MyCoordinates.Add(bridge);
+            MyCoordinates.Add(midWay);
+            MyCoordinates.Add(beach);
+
+            routeQuery.Waypoints = MyCoordinates;
+            routeQuery.QueryCompleted += routeQuery_QueryCompleted;
+            routeQuery.QueryAsync();
+
+        }
+
+        void geocodequery_QueryCompleted(object sender, QueryCompletedEventArgs<IList<MapLocation>> e)
+        {
+            if (e.Error == null)
+            {
+                if (routeQuery != null && MyCoordinates != null && e.Result.Count > 0)
+                {
+                    MyCoordinates.Add(e.Result[0].GeoCoordinate);
+                    pointCount--;
+
+                    if (pointCount == 0)
+                    {
+                        routeQuery.Waypoints = MyCoordinates;
+                        routeQuery.QueryCompleted += routeQuery_QueryCompleted;
+                        routeQuery.QueryAsync();
+                    }
+                }
+            }
+            else
+            {
+                if (routeQuery != null)
+                    routeQuery.Dispose();
+
+                if (MyCoordinates != null)
+                    MyCoordinates.Clear();
+
+                pointCount = 0;
+            }
+        }
+
+        void routeQuery_QueryCompleted(object sender, QueryCompletedEventArgs<Route> e)
+        {
+
+            if (e.Error == null)
+            {
+                Route MyRoute = e.Result;
+                MapRoute MyMapRoute = new MapRoute(MyRoute);
+                map.Center = MyCoordinates[0];
+                map.ZoomLevel = 13;
+                map.AddRoute(MyMapRoute);
+            }
+
+            if (routeQuery != null)
+                routeQuery.Dispose();
+
+            if (MyCoordinates != null)
+                MyCoordinates.Clear();
+
+            pointCount = 0;
+        }
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
