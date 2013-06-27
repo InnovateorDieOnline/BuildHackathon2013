@@ -98,11 +98,24 @@ namespace LiveCycle
             var nearest = this.DefaultViewModel.Landmarks.OrderBy(x => geoCoordinate.GetDistanceTo(x.Geocoordinate)).First();
             var distance = geoCoordinate.GetDistanceTo(nearest.Geocoordinate);
             double notificationThreshold = 1000;
-            if (distance < notificationThreshold && _activeLocation != nearest)
+            if (distance < notificationThreshold)
             {
-                _activeLocation = nearest;
-                ShowLandmark(nearest);
+                if (_activeLocation != nearest)
+                {
+                    _activeLocation = nearest;
+                    ShowLandmark(nearest);
+                }
             }
+            else
+            {
+                HideLandmark();
+            }
+        }
+
+        private void HideLandmark()
+        {
+            this.LandmarkName.Text = "";
+            (this.Resources["HideLandmark"] as Storyboard).Begin();
         }
 
         private void ShowLandmark(Landmark landmark)
