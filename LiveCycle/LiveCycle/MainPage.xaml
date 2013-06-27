@@ -9,7 +9,7 @@
     x:Class="LiveCycle.MainPage"
     x:Name="mainPage"
     mc:Ignorable="d"
-    xmlns:maptk="clr-namespace:Microsoft.Phone.Controls.Toolkit"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:dp="clr-namespace:LiveCycle.Classes"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -52,17 +52,17 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <maps:Map x:Name="map" Loaded="map_Loaded">
-                <!--<maptk:MapExtensions.Children>
-                    <maptk:MapItemsControl Name="StoresMapItemsControl">
-                        <maptk:MapItemsControl.ItemTemplate>
+            <maps:Map x:Name="map" Center="37.81997, -122.47859" ZoomLevel="12" Loaded="map_Loaded" dp:MapPushPinDependency.ItemsSource="{Binding Path=Landmarks}">
+                <toolkit:MapExtensions.Children>
+                    <toolkit:MapItemsControl Name="StoresMapItemsControl">
+                        <toolkit:MapItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <maptk:Pushpin x:Name="PushPins" GeoCoordinate="{Binding Location}" Visibility="Visible" Content="test"/>
+                                <toolkit:Pushpin x:Name="PushPins" GeoCoordinate="{Binding Geocoordinate}" Visibility="Visible" Content="{Binding Name}"/>
                             </DataTemplate>
-                        </maptk:MapItemsControl.ItemTemplate>
-                    </maptk:MapItemsControl>
-                    <maptk:UserLocationMarker x:Name="UserLocationMarker" Visibility="Visible" GeoCoordinate="{Binding MyLocation}"/>
-                </maptk:MapExtensions.Children>-->
+                        </toolkit:MapItemsControl.ItemTemplate>
+                    </toolkit:MapItemsControl>
+                    <!--<toolkit:UserLocationMarker x:Name="UserLocationMarker" Visibility="Visible" GeoCoordinate="{Binding Position}"/>-->
+                </toolkit:MapExtensions.Children>
             </maps:Map>
             <Grid x:Name="LandmarkGrid" Height="0" Grid.Row="1" Margin="0,0,0,12">
                 <Grid.ColumnDefinitions>

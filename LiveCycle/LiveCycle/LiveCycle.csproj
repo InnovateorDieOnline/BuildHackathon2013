@@ -93,6 +93,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\MapPushPinDependency.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Data\DefaultViewModel.cs" />
     <Compile Include="LandmarkPage.xaml.cs">
       <DependentUpon>LandmarkPage.xaml</DependentUpon>
@@ -149,9 +152,11 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Embarcadero.png" />
     <Content Include="Images\GoldenGateBridge.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\MosconeCenter.png" />
     <Content Include="Images\RodeoBay.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -162,8 +167,11 @@
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Classes\" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\WPToolkit.4.2013.06.11\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

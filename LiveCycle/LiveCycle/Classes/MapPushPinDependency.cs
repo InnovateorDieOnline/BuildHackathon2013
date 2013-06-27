@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Phone.Maps.Controls;
+using Microsoft.Phone.Maps.Toolkit;
 
 namespace LiveCycle.Classes
 {

@@ -87,6 +87,7 @@ namespace LiveCycle
             Dispatcher.BeginInvoke(() =>
             {
                 this.map.Center = new GeoCoordinate(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
+                this.DefaultViewModel.Position = this.map.Center;
                 ShowNearestPOI(this.map.Center);
                 this.map.ZoomLevel = 12;
                 Dispatcher.BeginInvoke(() => SetupMyLocation());

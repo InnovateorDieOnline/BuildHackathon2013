@@ -14,6 +14,15 @@ namespace LiveCycle.Data
 {
     public class DefaultViewModel : INotifyPropertyChanged
     {
+        #region Position
+        private GeoCoordinate _Position;
+        public GeoCoordinate Position
+        {
+            get { return _Position; }
+            set { _Position = value; OnPropertyChanged(); }
+        }
+        #endregion
+
         #region Landmarks
         private ObservableCollection<Landmark> _Landmarks;
         public ObservableCollection<Landmark> Landmarks
@@ -26,24 +35,26 @@ namespace LiveCycle.Data
         public void DesignTimeSetup()
         {
 
-            var position = new GeoCoordinate();
-            position.Latitude = 77;
-            position.Longitude = 99;
+            //var position = new GeoCoordinate();
+            //position.Latitude = 77;
+            //position.Longitude = 99;
 
-            Random rand = new Random();
-            Landmark poi = null;
-            for (int i = 0; i < 10; i++)
-            {
+            //Random rand = new Random();
+            //Landmark poi = null;
+            //for (int i = 0; i < 10; i++)
+            //{
 
-                poi = new Landmark();
-                poi.Geocoordinate = new GeoCoordinate(position.Latitude + (rand.Next(0, 9) / 100)
-                    , position.Longitude + (rand.Next(0, 9) / 100));
-                poi.Name = "Landmark " + i;
-                Landmarks.Add(poi);
-            }
+            //    poi = new Landmark();
+            //    poi.Geocoordinate = new GeoCoordinate(position.Latitude + (rand.Next(0, 9) / 100)
+            //        , position.Longitude + (rand.Next(0, 9) / 100));
+            //    poi.Name = "Landmark " + i;
+            //    Landmarks.Add(poi);
+            //}
 
             Landmarks.Add(GetGoldenGateBridge());
             Landmarks.Add(GetRodeoBeach());
+            Landmarks.Add(GetMosconeCenter());
+            Landmarks.Add(GetEmbarcadero());
         }
 
         private Landmark GetGoldenGateBridge()
@@ -53,6 +64,28 @@ namespace LiveCycle.Data
                 Name = "Golden Gate Bridge",
                 Geocoordinate = new GeoCoordinate(37.81997, -122.47859),
                 ImageSource = "Images/GoldenGateBridge.png"
+            };
+            return l;
+        }
+
+        private Landmark GetMosconeCenter()
+        {
+            Landmark l = new Landmark()
+            {
+                Name = "Moscone Center",
+                Geocoordinate = new GeoCoordinate(37.784173, -122.401557),
+                ImageSource = "Images/MosconeCenter.png"
+            };
+            return l;
+        }
+
+        private Landmark GetEmbarcadero()
+        {
+            Landmark l = new Landmark()
+            {
+                Name = "Embarcadero",
+                Geocoordinate = new GeoCoordinate(37.79625,-122.405115),
+                ImageSource = "Images/Embarcadero.png"
             };
             return l;
         }
