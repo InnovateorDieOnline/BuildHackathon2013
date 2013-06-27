@@ -88,7 +88,7 @@ namespace LiveCycle
             {
                 this.map.Center = new GeoCoordinate(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
                 ShowNearestPOI(this.map.Center);
-                this.map.ZoomLevel = 12;
+                this.map.ZoomLevel = 14;
                 Dispatcher.BeginInvoke(() => SetupMyLocation());
             });
         }
@@ -214,11 +214,11 @@ namespace LiveCycle
             pointCount++;
             */
 
-            GeoCoordinate bridge = new GeoCoordinate(37.8071, -122.4739);
-            GeoCoordinate midWay = new GeoCoordinate(37.8262, -122.4995);
-            GeoCoordinate beach = new GeoCoordinate(37.8300, -122.5358);
+            GeoCoordinate bridge = new GeoCoordinate(37.7829, -122.4000);
+            GeoCoordinate midWay1 = new GeoCoordinate(37.7875, -122.4033);
+            GeoCoordinate beach = new GeoCoordinate(37.8092, -122.4164);
             MyCoordinates.Add(bridge);
-            MyCoordinates.Add(midWay);
+            MyCoordinates.Add(midWay1);
             MyCoordinates.Add(beach);
 
             routeQuery.Waypoints = MyCoordinates;
@@ -264,7 +264,7 @@ namespace LiveCycle
                 Route MyRoute = e.Result;
                 MapRoute MyMapRoute = new MapRoute(MyRoute);
                 map.Center = MyCoordinates[0];
-                map.ZoomLevel = 13;
+                map.ZoomLevel = 14;
                 map.AddRoute(MyMapRoute);
             }
 
