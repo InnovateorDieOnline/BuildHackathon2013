@@ -10,8 +10,9 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
+    x:Name="mainPage"
     mc:Ignorable="d"
-        DataContext="{Binding DefaultViewModel, ElementName=mainPage}"
+    DataContext="{Binding DefaultViewModel, ElementName=mainPage}"
     xmlns:data="clr-namespace:LiveCycle.Data"
     d:DataContext="{d:DesignInstance Type=data:DefaultViewModel, IsDesignTimeCreatable=True}"
     shell:SystemTray.IsVisible="True">
@@ -28,18 +29,14 @@
             <ListBox ItemsSource="{Binding Landmarks}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Grid.Row="1" Margin="0,0,0,12">
+                        <Grid x:Name="LandmarkGrid" Grid.Row="1" Margin="0,0,0,12">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Rectangle Fill="Blue" Width="100" Height="100" Margin="0,0,10,0"/>
+                            <Image x:Name="LandmarkImage" MaxHeight="100" MaxWidth="100" Source="{Binding ImageSource}" Margin="0,0,10,0"/>
                             <StackPanel  Grid.Column="1">
-                                <TextBlock Text="{Binding Name}" FontSize="36" />
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="&lt;-" />
-                                    <TextBlock Text="1/2 Mile" />
-                                </StackPanel>
+                                <TextBlock x:Name="LandmarkName" Text="{Binding Name}" FontSize="36" />
                             </StackPanel>
                         </Grid>
                     </DataTemplate>

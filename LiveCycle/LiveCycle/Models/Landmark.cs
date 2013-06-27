@@ -20,7 +20,14 @@ namespace LiveCycle.Models
             get { return _Name; }
             set { _Name = value; OnPropertyChanged(); }
         }
-        public string ImageSource { get; set; }
+        #region ImageSource
+        private string _ImageSource;
+        public string ImageSource
+        {
+            get { return _ImageSource; }
+            set { _ImageSource = value; OnPropertyChanged(); }
+        }
+        #endregion
 
         #region INPC
         public event PropertyChangedEventHandler PropertyChanged;
