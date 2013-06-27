@@ -27,6 +27,13 @@
                     To="100" 
                     Duration="0:0:1.5"/>
         </Storyboard>
+        <Storyboard x:Key="HideLandmark">
+            <DoubleAnimation  Storyboard.TargetName="LandmarkGrid"
+                    Storyboard.TargetProperty="(FrameworkElement.Height)" 
+                              From="0"
+                    To="100" 
+                    Duration="0:0:1.5"/>
+        </Storyboard>
     </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
