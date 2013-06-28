@@ -22,6 +22,7 @@ using System.Windows.Media.Animation;
 using Windows.Devices.Geolocation;
 using Microsoft.Phone.Maps.Services;
 using Microsoft.Phone.Maps.Controls;
+using System.Xml.Linq;
 
 namespace LiveCycle
 {
@@ -69,8 +70,34 @@ namespace LiveCycle
             geolocator.MovementThreshold = 50;
             geolocator.StatusChanged += geolocator_StatusChanged;
             geolocator.PositionChanged += geolocator_PositionChanged;
+
+#if DEMO
+            var resource = App.GetResourceStream(new Uri("GPS Track.xml", UriKind.Relative));
+            using(var stream = resource.Stream)
+            {
+                //var reader = new System.IO.StreamReader(stream);
+                //var locations = reader.ReadToEndAsync();
+                var doc = XDocument.Load(stream);
+                XNamespace ns = "http://schemas.microsoft.com/WindowsPhoneEmulator/2009/08/SensorData";
+                var query = from c in doc.Descendants(ns + "GpsData")
+                            select c;
+                coordinates = query.ToList().Select<XElement, GeoCoordinate>(x => new GeoCoordinate(double.Parse(x.FirstAttribute.Value), double.Parse(x.LastAttribute.Value))).ToList();
+                _demoTimer = new DispatcherTimer();
+                _demoTimer.Interval = TimeSpan.FromSeconds(1);
+                _demoTimer.Tick += _demoTimer_Tick;
+                _demoTimer.Start();
+            }
+#endif
         }
 
+        void _demoTimer_Tick(object sender, EventArgs e)
+        {
+            if(coordinates.Count > 0)
+                UpdatePosition(coordinates[i++ % coordinates.Count()]);
+        }
+        DispatcherTimer _demoTimer;
+        int i = 0;
+        List<GeoCoordinate> coordinates;
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
@@ -86,19 +113,24 @@ namespace LiveCycle
         {
             Dispatcher.BeginInvoke(() =>
             {
-                this.map.Center = new GeoCoordinate(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
-                this.DefaultViewModel.Position = this.map.Center;
-                ShowNearestPOI(this.map.Center);
-                this.map.ZoomLevel = 14;
-                Dispatcher.BeginInvoke(() => SetupMyLocation());
+                UpdatePosition(new GeoCoordinate(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude));
             });
+        }
+
+        private void UpdatePosition(GeoCoordinate position)
+        {
+            this.map.Center = position;
+            this.DefaultViewModel.Position = position;
+            ShowNearestPOI(this.map.Center);
+            this.map.ZoomLevel = 14;
+            Dispatcher.BeginInvoke(() => SetupMyLocation());
         }
 
         private void ShowNearestPOI(GeoCoordinate geoCoordinate)
         {
             var nearest = this.DefaultViewModel.Landmarks.OrderBy(x => geoCoordinate.GetDistanceTo(x.Geocoordinate)).First();
             var distance = geoCoordinate.GetDistanceTo(nearest.Geocoordinate);
-            double notificationThreshold = 1000;
+            double notificationThreshold = 500;
             if (distance < notificationThreshold)
             {
                 if (_activeLocation != nearest)
@@ -115,8 +147,11 @@ namespace LiveCycle
 
         private void HideLandmark()
         {
-            this.LandmarkName.Text = "";
-            (this.Resources["HideLandmark"] as Storyboard).Begin();
+            if (_activeLocation != null)
+            {
+                _activeLocation = null;
+                (this.Resources["HideLandmark"] as Storyboard).Begin();
+            }
         }
 
         private void ShowLandmark(Landmark landmark)

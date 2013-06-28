@@ -30,8 +30,8 @@
         <Storyboard x:Key="HideLandmark">
             <DoubleAnimation  Storyboard.TargetName="LandmarkGrid"
                     Storyboard.TargetProperty="(FrameworkElement.Height)" 
-                              From="0"
-                    To="100" 
+                              From="100"
+                    To="0" 
                     Duration="0:0:1.5"/>
         </Storyboard>
     </phone:PhoneApplicationPage.Resources>
