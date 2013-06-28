@@ -122,7 +122,6 @@ namespace LiveCycle
             this.map.Center = position;
             this.DefaultViewModel.Position = position;
             ShowNearestPOI(this.map.Center);
-            this.map.ZoomLevel = 14;
             Dispatcher.BeginInvoke(() => SetupMyLocation());
         }
 
@@ -313,7 +312,6 @@ namespace LiveCycle
                 Route MyRoute = e.Result;
                 MapRoute MyMapRoute = new MapRoute(MyRoute);
                 map.Center = MyCoordinates[0];
-                map.ZoomLevel = 14;
                 map.AddRoute(MyMapRoute);
             }
 

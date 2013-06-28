@@ -52,7 +52,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <maps:Map x:Name="map" Center="37.81997, -122.47859" ZoomLevel="12" Loaded="map_Loaded" dp:MapPushPinDependency.ItemsSource="{Binding Path=Landmarks}">
+            <maps:Map x:Name="map" Center="37.81997, -122.47859" ZoomLevel="14" Loaded="map_Loaded" dp:MapPushPinDependency.ItemsSource="{Binding Path=Landmarks}">
                 <toolkit:MapExtensions.Children>
                     <toolkit:MapItemsControl Name="StoresMapItemsControl">
                         <toolkit:MapItemsControl.ItemTemplate>
